@@ -1,3 +1,4 @@
+/*
 const activities = ["babysit tadpoles", "flies for lunch", "tongue stretch", "swimming lesson"];
 let num = prompt("how many frogsssss?");
 if (num == 0) {
@@ -15,3 +16,17 @@ if (num == 3) {
 if (num == 4) {
     print(activities[0]);
 }
+*/
+
+// frog pond
+const activities = ["babysit tadpoles",
+    "flies for lunch",
+    "tongue stretch",
+    "swimming lesson"];
+
+let index = prompt("whats your activity index?");
+index = index % 4;
+
+print(activities[index])
+
+
