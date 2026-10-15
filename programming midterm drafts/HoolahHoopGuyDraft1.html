@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<body>
+    <canvas width="600" height="600" id="canvas"
+        style="width: 600px; height: 600px;"></canvas>
+</body>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const w = canvas.width, h = canvas.height;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width *= dpr;
+    canvas.height *= dpr;
+    ctx.scale(dpr, dpr);
+
+    // Background
+    ctx.fillStyle = "lightblue";
+    ctx.fillRect(0, 0, w, h);
+
+    // Hoop coordinates
+    const hoopX = w / 2;
+    const hoopY = h / 2 + 40;
+    const hoopWidth = 190;
+    const hoopHeight = 65;
+
+    // Draw the hula hoop
+    ctx.beginPath();
+    ctx.ellipse(hoopX, hoopY, hoopWidth, hoopHeight,
+                -0.2, 0, Math.PI * 2);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 7;
+    ctx.stroke();
+
+    // Stick figure head
+    const headX = w / 2;
+    const headY = 155;
+    const headR = 30;
+
+    ctx.beginPath();
+    ctx.arc(headX, headY, headR, 0, Math.PI * 2);
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 5;
+    ctx.stroke();
+
+    // Body
+    ctx.beginPath();
+    ctx.moveTo(headX, headY + headR);
+    ctx.lineTo(headX, 330);
+    ctx.stroke();
+
+    // Arms
+    ctx.beginPath();
+    ctx.moveTo(headX, 220);
+    ctx.lineTo(220, 260);
+    ctx.moveTo(headX, 220);
+    ctx.lineTo(380, 260);
+    ctx.stroke();
+
+    // Legs
+    ctx.beginPath();
+    ctx.moveTo(headX, 330);
+    ctx.lineTo(245, 420);
+    ctx.moveTo(headX, 330);
+    ctx.lineTo(355, 420);
+    ctx.stroke();
+
+    // Eyes
+    ctx.fillStyle = "black";
+    ctx.beginPath();
+    ctx.arc(headX - 10, headY - 5, 3, 0, Math.PI * 2);
+    ctx.arc(headX + 10, headY - 5, 3, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Smile
+    ctx.beginPath();
+    ctx.arc(headX, headY + 2, 13, 0.2, Math.PI - 0.2);
+    ctx.stroke();
+</script>
